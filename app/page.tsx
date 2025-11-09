@@ -1501,8 +1501,12 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">
-              Our Roadmap to the Autonomous Future.
+              Roadmap: Shipping to Production.
             </h2>
+            <p className="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+              Strong hard features are implemented. Our current focus is wiring services, production testing, and
+              environment configuration.
+            </p>
           </div>
 
           <div className="space-y-12">
@@ -1536,14 +1540,15 @@ export default function HomePage() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-2">
-                  <h3 className="text-2xl font-bold text-slate-900">Deep Integration & Production Hardening</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">Wiring, Production Testing & Configuration</h3>
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
                     In Progress
                   </span>
                 </div>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  We are currently implementing and testing our deep, action-oriented MCP tools with third-party
-                  services in a production-ready environment.
+                  Core systems are in place (orchestrator, async workers, MCP toolchain, knowledge base, repository).
+                  We are wiring services together, validating in production-like environments, tuning configuration,
+                  hardening security/observability, and finalizing end-to-end tests.
                 </p>
               </div>
             </div>
@@ -1564,7 +1569,7 @@ export default function HomePage() {
                 </div>
                 <p className="text-lg text-slate-600 leading-relaxed">
                   Following the current hardening sprint, we will be opening the platform to a limited number of initial
-                  users. Join the waitlist to be considered.
+                  users. 
                 </p>
               </div>
             </div>
