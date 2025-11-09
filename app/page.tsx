@@ -208,7 +208,7 @@ export default function HomePage() {
 
             {/* Sub-headline */}
             <h2 className="text-xl md:text-2xl text-slate-400 font-medium max-w-2xl mx-auto text-balance">
-              Agents Foundry — pilot AI agents on your knowledge.
+              create and pilot AI Agents that knows your knowledge and tools
             </h2>
 
             {/* CTA Form */}
@@ -236,10 +236,7 @@ export default function HomePage() {
               {success && <p className="text-sm text-green-400">Thanks for joining! We've sent you a welcome email.</p>}
             </div>
 
-            {/* Social Proof */}
-            <p className="text-sm text-slate-500 mt-6">
-              Currently in private beta with a limited number of forward-thinking teams.
-            </p>
+            {/* Social Proof removed by request */}
           </div>
         </div>
 
@@ -491,21 +488,21 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  OAuth[OAuth Consent] --> GSM[Google Secret Manager\n(per-tenant tokens)]
-  CS[Cloud Scheduler] --> WRK[Ingestion Worker\n(SA impersonation)]
-  GD[Google Drive] --> WRK
-  OD[OneDrive] --> WRK
-  AT[Airtable] --> WRK
-  NO[Notion] --> WRK
-  HS[HubSpot] --> WRK
-  JI[Jira] --> WRK
-  SL[Slack] --> WRK
-  GSM --> WRK
-  WRK --> BQ[(BigQuery: tenant datasets)]
-  BQ --> VEC[Vertex AI: embeddings + vector index]
-  VEC --> Search[Semantic Search & Q/A]
-  BQ --> DF[Dataform: transforms]
-  DF --> Analytics[RLS-secured analytics]
+  OAuth[OAuth Consent] --> GSM[Google Secret Manager tokens]
+  Scheduler[Cloud Scheduler] --> Worker[Ingestion Worker SA impersonation]
+  Drive[Google Drive] --> Worker
+  OneDrive[OneDrive] --> Worker
+  Airtable --> Worker
+  Notion --> Worker
+  HubSpot --> Worker
+  Jira --> Worker
+  Slack --> Worker
+  GSM --> Worker
+  Worker --> BigQuery[BigQuery tenant datasets]
+  BigQuery --> Vertex[Vertex AI embeddings index]
+  Vertex --> Search[Semantic search and Q and A]
+  BigQuery --> Dataform[Dataform transforms]
+  Dataform --> Analytics[Analytics with RLS]
 `}</div>
           </div>
         </div>
@@ -520,17 +517,17 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  Goal[Business Goal] --> ORCH[2N+1 Orchestrator]
-  ORCH --> Plan[Plan + Think-Act-Observe]
-  ORCH --> Approve[Tool approbation (IO safety)]
-  ORCH --> Team[Team orchestrator]
-  Team --> A[Specialist A]
-  Team --> B[Specialist B]
-  A --> Obs1[Observation]
-  B --> Obs2[Observation]
-  Obs1 --> ORCH
-  Obs2 --> ORCH
-  ORCH --> Synth[Final synthesis & result]
+  Goal[Business Goal] --> Orchestrator[2N+1 Orchestrator]
+  Orchestrator --> Plan[Plan and Think-Act-Observe]
+  Orchestrator --> Approvals[Tool approbation safety]
+  Orchestrator --> Team[Team orchestrator]
+  Team --> SpecialistA[Specialist A]
+  Team --> SpecialistB[Specialist B]
+  SpecialistA --> Obs1[Observation]
+  SpecialistB --> Obs2[Observation]
+  Obs1 --> Orchestrator
+  Obs2 --> Orchestrator
+  Orchestrator --> Result[Final synthesis and result]
 `}</div>
           </div>
         </div>
@@ -545,18 +542,18 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  API[API Request] --> JOB[Job table (persistent state)]
-  JOB --> CEL[Celery task]
-  CEL --> REDIS[Redis broker]
-  REDIS --> W1[Worker 1]
-  REDIS --> WN[Worker N]
-  W1 --> REPO[Repository service (AI assets)]
-  WN --> REPO
-  W1 --> DONE[Job complete]
-  WN --> DONE
-  DONE --> PUB[Live updates (Redis Pub/Sub)]
-  PUB --> UI[UI]
-  REPO --> UI
+  API[API request] --> Job[Job table persistent state]
+  Job --> Celery[Celery task]
+  Celery --> Redis[Redis broker]
+  Redis --> Worker1[Worker 1]
+  Redis --> WorkerN[Worker N]
+  Worker1 --> Repo[Repository service AI assets]
+  WorkerN --> Repo
+  Worker1 --> Done[Job complete]
+  WorkerN --> Done
+  Done --> Updates[Live updates via PubSub]
+  Updates --> UI[User interface]
+  Repo --> UI
 `}</div>
           </div>
         </div>
@@ -571,52 +568,113 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  USER[Connect Tool] --> OAUTH[OAuth endpoint]
-  OAUTH --> GSM[Store token in GSM\n(per tenant)]
-  GSM --> MCP[MCP Tool (scoped creds)]
-  MCP --> CONFIRM[Confirm Action]
-  CONFIRM --> API[Third-party API]
-  API --> EXT[External System (Slack/Jira/HubSpot...)]
-  EXT --> RESULT[Result to agents]
+  User[Connect tool] --> OAuth[OAuth endpoint]
+  OAuth --> GSM[Store token in GSM per tenant]
+  GSM --> Tool[MCP tool scoped credentials]
+  Tool --> Confirm[Confirm Action]
+  Confirm --> API[Third party API]
+  API --> External[External system]
+  External --> Agents[Result to agents]
 `}</div>
           </div>
         </div>
       </section>
 
-      {/* AI-triggered UI elements */}
-      <section id="ai-triggered-ui" className="py-24 bg-white">
+      {/* Repository section */}
+      <section id="repository" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">UI that Reacts to Intelligence.</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">As agents work, the UI lights up: blueprint previews, a transparent execution trace, cost tracking, and action confirmations—updated in real time.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">The Repository: Shared memory for all agents.</h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">Every artifact your agents create—documents, datasets, code, and media—is stored in the Repository. Any agent can search, retrieve, and build on prior outputs, so your system compounds in capability over time.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  AGENTS[Agent actions] --> TRIG[UI triggers]
-  TRIG --> BLUE[Blueprint preview]
-  TRIG --> TRACE[Execution trace]
-  TRIG --> COST[Real-time cost tracker]
-  TRIG --> CONFIRM[Action confirmation]
-  PUB[Redis Pub/Sub] --> UI[Client UI]
-  BLUE --> UI
-  TRACE --> UI
-  COST --> UI
-  CONFIRM --> UI
+  Repo[Repository service] --- Assets[Assets: docs, data, code, media]
+  AgentA[Agent A] --> Repo
+  AgentB[Agent B] --> Repo
+  AgentC[Agent C] --> Repo
+  Repo --> SearchRepo[Search and browse]
+  Repo --> Retrieve[Retrieve by context and tags]
+  Retrieve --> AgentA
+  Retrieve --> AgentB
+  Retrieve --> AgentC
+  Growth[Repository grows over time] --> Repo
 `}</div>
           </div>
         </div>
       </section>
 
-      {/* Our Agent Suites section */}
-      <section className="py-24 bg-white">
+      {/* Agents Foundry section */}
+      <section id="agents-foundry" className="py-24 bg-white">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">
-            A Complete Digital Workforce, Ready on Day One.
+            Agents Foundry: Design your own private AI agents.
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto text-balance">
-            Choose from our pre-built Agent Teams, each containing specialized AI agents trained for specific business
-            functions.
+            Go beyond our pre-built teams. Design and deploy your own custom, private AI agents and workflows by
+            having a simple conversation with the Orchestrator. It's not a no-code builder; it's an AI that builds for
+            you.
           </p>
+          <p className="text-sm text-slate-500 max-w-3xl mx-auto mt-2">
+            When you first open the platform, you'll also find a handful of small prebuilt agents to try—use them as
+            starters or learning examples.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-3xl p-12 shadow-2xl border border-slate-200 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - User input */}
+            <div className="space-y-6">
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-semibold">You</span>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-slate-900 font-medium">I need an agent that can screen new job applicants</p>
+                    <div className="text-sm text-slate-600">
+                      It should review resumes, check LinkedIn profiles, and score candidates based on our hiring
+                      criteria...
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - AI response */}
+            <div className="space-y-6">
+              <div className="bg-slate-900 rounded-2xl p-6 text-white">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                    <BrainCircuit className="w-4 h-4 text-slate-900" />
+                  </div>
+                  <div className="space-y-4">
+                    <p className="font-medium">Agent Blueprint Generated</p>
+                    <div className="bg-slate-800 rounded-lg p-4 text-sm">
+                      <div className="space-y-2">
+                        <div className="text-slate-300">
+                          <span className="text-green-400">✓</span> Resume Parser & Analyzer
+                        </div>
+                        <div className="text-slate-300">
+                          <span className="text-green-400">✓</span> LinkedIn Profile Evaluator
+                        </div>
+                        <div className="text-slate-300">
+                          <span className="text-green-400">✓</span> Scoring Algorithm (Custom Criteria)
+                        </div>
+                        <div className="text-slate-300">
+                          <span className="text-green-400">✓</span> ATS Integration Ready
+                        </div>
+                      </div>
+                    </div>
+                    <Button className="bg-white text-slate-900 hover:bg-slate-100 text-sm">
+                      Deploy Agent
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="overflow-hidden">
@@ -1421,77 +1479,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Agents Foundry section */}
-      <section id="agents-foundry" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">
-              Agents Foundry: Design your own private AI agents.
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Go beyond our pre-built teams. Design and deploy your own custom, private AI agents and workflows by
-              having a simple conversation with the Orchestrator. It's not a no-code builder; it's an AI that builds for
-              you.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-12 shadow-2xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left side - User input */}
-              <div className="space-y-6">
-                <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-sm font-semibold">You</span>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-slate-900 font-medium">I need an agent that can screen new job applicants</p>
-                      <div className="text-sm text-slate-600">
-                        It should review resumes, check LinkedIn profiles, and score candidates based on our hiring
-                        criteria...
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right side - AI response */}
-              <div className="space-y-6">
-                <div className="bg-slate-900 rounded-2xl p-6 text-white">
-                  <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                      <BrainCircuit className="w-4 h-4 text-slate-900" />
-                    </div>
-                    <div className="space-y-4">
-                      <p className="font-medium">Agent Blueprint Generated</p>
-                      <div className="bg-slate-800 rounded-lg p-4 text-sm">
-                        <div className="space-y-2">
-                          <div className="text-slate-300">
-                            <span className="text-green-400">✓</span> Resume Parser & Analyzer
-                          </div>
-                          <div className="text-slate-300">
-                            <span className="text-green-400">✓</span> LinkedIn Profile Evaluator
-                          </div>
-                          <div className="text-slate-300">
-                            <span className="text-green-400">✓</span> Scoring Algorithm (Custom Criteria)
-                          </div>
-                          <div className="text-slate-300">
-                            <span className="text-green-400">✓</span> ATS Integration Ready
-                          </div>
-                        </div>
-                      </div>
-                      <Button className="bg-white text-slate-900 hover:bg-slate-100 text-sm">
-                        Deploy Agent
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Agents Foundry relocated above */}
 
       {/* Industry Context section */}
       <section className="py-24 bg-slate-50">
