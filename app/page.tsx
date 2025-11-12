@@ -517,7 +517,7 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  Goal[Business Goal] --> Orchestrator[Platform Orchestrator ("IO")]
+  Goal[Business Goal] --> Orchestrator[The Platform Orchestrator: "IO"]
   Orchestrator --> Plan[Plan and Think-Act-Observe]
   Orchestrator --> Approvals[Tool approbation safety]
   Orchestrator --> Team[Team orchestrator]
