@@ -269,8 +269,9 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-slate-900">The "No-Code" Ceiling</h3>
               <p className="text-slate-600 leading-relaxed">
-                No-code agent builders offer a glimpse of the future, but they are shared, multi-tenant platforms that
-                lack the security, performance, and deep customization required for mission-critical business processes.
+                No-code agent builders promise quick wins but hit limits fast: shallow reasoning, brittle prompt chains,
+                limited tool coverage, poor debugging and observability, and constrained versioning/governance—making
+                complex, evolving processes hard to sustain.
               </p>
             </div>
 
@@ -484,7 +485,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">Your Knowledge, Organized and Searchable.</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">Etherion connects to your tools (Drive, OneDrive, Airtable, Notion, HubSpot, Jira, Slack) using secure OAuth and stores access in GSM. A scheduler triggers a worker that fetches and embeds content into your private BigQuery dataset and Vertex AI vector index. The result is fast, accurate, tenant-isolated search and Q/A.</p>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">Etherion connects to your tools (Drive, OneDrive, Airtable, Notion, HubSpot, Jira, Slack) using secure OAuth and stores access in GSM. A scheduler triggers a worker that fetches and embeds content into your private BigQuery dataset and Vertex AI vector index. The result is fast, accurate, secure search and Q/A.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`flowchart TD
@@ -498,7 +499,7 @@ export default function HomePage() {
   Jira --> Worker
   Slack --> Worker
   GSM --> Worker
-  Worker --> BigQuery[BigQuery tenant datasets]
+  Worker --> BigQuery[BigQuery datasets]
   BigQuery --> Vertex[Vertex AI embeddings index]
   Vertex --> Search[Semantic search and Q and A]
   BigQuery --> Dataform[Dataform transforms]
@@ -564,12 +565,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">Tools with Guardrails.</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">MCP tools connect to third-party systems through OAuth. Tokens are stored in GSM per tenant. Before acting, agents pass a Confirm Action step. Then calls are made to the right API with scoped credentials.</p>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">MCP tools connect to third-party systems through OAuth. Tokens are stored securely in GSM. Before acting, agents pass a Confirm Action step. Then calls are made to the right API with scoped credentials.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`flowchart TD
   User[Connect tool] --> OAuth[OAuth endpoint]
-  OAuth --> GSM[Store token in GSM per tenant]
+  OAuth --> GSM[Store token securely in GSM]
   GSM --> Tool[MCP tool scoped credentials]
   Tool --> Confirm[Confirm Action]
   Confirm --> API[Third party API]
