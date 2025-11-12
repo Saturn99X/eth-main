@@ -295,7 +295,7 @@ export default function HomePage() {
             Etherion: Your Private, Autonomous Digital Workforce.
           </h2>
           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Etherion is a single-tenant agentic platform that provides you with your own private, autonomous AI
+            Etherion is an agentic platform that provides you with your own private, autonomous AI
             workforce. It is architected from the ground up to solve the automation gap. Go from a high-level business
             goal to a complete, multi-step workflow executed by a team of intelligent agents that learn from your
             feedback and are deeply integrated with your tools.
@@ -334,7 +334,7 @@ export default function HomePage() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold text-slate-900">Technical Leaders & CTOs</h3>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  Provide your team with a secure, single-tenant platform to build and deploy custom, high-performance
+                  Provide your team with a secure,n platform to build and deploy custom, high-performance
                   AI agents without getting bogged down in infrastructure.
                 </p>
               </div>
@@ -513,11 +513,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-balance mb-6">From Goal to Teamwork—Automagically.</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">You describe a goal. The 2N+1 Orchestrator plans, approves tools, and spins up the right specialists. Each agent follows a Think–Act–Observe loop, and the Orchestrator synthesizes their work into a single result.</p>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">You describe a goal. The Platform Orchestrator plans, approves tools, and spins up the right specialists. Each agent follows a Think–Act–Observe loop, and the Orchestrator synthesizes their work into a single result.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
             <div className="mermaid text-left">{`graph TD
-  Goal[Business Goal] --> Orchestrator[2N+1 Orchestrator]
+  Goal[Business Goal] --> Orchestrator[Platform Orchestrator ("IO")]
   Orchestrator --> Plan[Plan and Think-Act-Observe]
   Orchestrator --> Approvals[Tool approbation safety]
   Orchestrator --> Team[Team orchestrator]
@@ -1525,7 +1525,7 @@ export default function HomePage() {
                   </span>
                 </div>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  The foundational single-tenant infrastructure, the 2N+1 Orchestrator, and the core agentic framework
+                  The foundationaln infrastructure, the 2N+1 Orchestrator, and the core agentic framework
                   are built and validated.
                 </p>
               </div>
@@ -1632,54 +1632,11 @@ export default function HomePage() {
               </div>
               <p className="text-sm text-slate-400">© 2025 Etherion. All rights reserved.</p>
             </div>
-
-            {/* Column 2 - Navigation Links */}
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Navigation</h4>
-              <div className="space-y-2">
-                <a href="#problem" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  The Problem
-                </a>
-                <a href="#solution" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  The Solution
-                </a>
-                <a href="#how-it-works" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  How It Works
-                </a>
-                <a href="#founder" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  Founder
-                </a>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent mt-2"
-                >
-                  Join Private Beta
-                </Button>
-              </div>
             </div>
-
-            {/* Column 3 - Contact & Legal */}
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Contact & Legal</h4>
-              <div className="space-y-2">
-                <a
-                  href="mailto:contact@etherionai.com"
-                  className="block text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  contact@etherionai.com
-                </a>
-                <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  Terms of Service
-                </a>
-                <a href="#" className="block text-slate-400 hover:text-white transition-colors text-sm">
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </footer>
     </>
   )
 }
+
+
