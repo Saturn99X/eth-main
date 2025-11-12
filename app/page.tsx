@@ -487,7 +487,7 @@ export default function HomePage() {
             <p className="text-xl text-slate-600 max-w-4xl mx-auto">Etherion connects to your tools (Drive, OneDrive, Airtable, Notion, HubSpot, Jira, Slack) using secure OAuth and stores access in GSM. A scheduler triggers a worker that fetches and embeds content into your private BigQuery dataset and Vertex AI vector index. The result is fast, accurate, tenant-isolated search and Q/A.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="mermaid text-left">{`graph TD
+            <div className="mermaid text-left">{`flowchart TD
   OAuth[OAuth Consent] --> GSM[Google Secret Manager tokens]
   Scheduler[Cloud Scheduler] --> Worker[Ingestion Worker SA impersonation]
   Drive[Google Drive] --> Worker
@@ -516,8 +516,8 @@ export default function HomePage() {
             <p className="text-xl text-slate-600 max-w-4xl mx-auto">You describe a goal. The Platform Orchestrator plans, approves tools, and spins up the right specialists. Each agent follows a Think–Act–Observe loop, and the Orchestrator synthesizes their work into a single result.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="mermaid text-left">{`graph TD
-  Goal[Business Goal] --> Orchestrator[The Platform Orchestrator: "IO"]
+            <div className="mermaid text-left">{`flowchart TD
+  Goal[Business Goal] --> Orchestrator[The Platform Orchestrator: IO]
   Orchestrator --> Plan[Plan and Think-Act-Observe]
   Orchestrator --> Approvals[Tool approbation safety]
   Orchestrator --> Team[Team orchestrator]
@@ -541,7 +541,7 @@ export default function HomePage() {
             <p className="text-xl text-slate-600 max-w-4xl mx-auto">Tasks run in the background using Celery and Redis. Jobs persist in the database, workers process them in parallel, and results—including AI-generated assets—are stored in the Repository service with real-time status updates to the UI.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="mermaid text-left">{`graph TD
+            <div className="mermaid text-left">{`flowchart TD
   API[API request] --> Job[Job table persistent state]
   Job --> Celery[Celery task]
   Celery --> Redis[Redis broker]
@@ -567,7 +567,7 @@ export default function HomePage() {
             <p className="text-xl text-slate-600 max-w-4xl mx-auto">MCP tools connect to third-party systems through OAuth. Tokens are stored in GSM per tenant. Before acting, agents pass a Confirm Action step. Then calls are made to the right API with scoped credentials.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="mermaid text-left">{`graph TD
+            <div className="mermaid text-left">{`flowchart TD
   User[Connect tool] --> OAuth[OAuth endpoint]
   OAuth --> GSM[Store token in GSM per tenant]
   GSM --> Tool[MCP tool scoped credentials]
@@ -588,7 +588,7 @@ export default function HomePage() {
             <p className="text-xl text-slate-600 max-w-4xl mx-auto">Every artifact your agents create—documents, datasets, code, and media—is stored in the Repository. Any agent can search, retrieve, and build on prior outputs, so your system compounds in capability over time.</p>
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200 max-w-5xl mx-auto">
-            <div className="mermaid text-left">{`graph TD
+            <div className="mermaid text-left">{`flowchart TD
   Repo[Repository service] --- Assets[Assets: docs, data, code, media]
   AgentA[Agent A] --> Repo
   AgentB[Agent B] --> Repo
