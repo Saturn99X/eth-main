@@ -189,12 +189,6 @@ export default function HomePage() {
               </a>
             </div>
 
-            <Button
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
-            >
-              Join Private Beta
-            </Button>
           </div>
         </nav>
 
